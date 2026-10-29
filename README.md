@@ -1,7 +1,7 @@
 # 🚗 KaarWala: Fair Market Price Prediction for Used Vehicles in Pakistan
 
 **Course:** CT-378 Machine Learning (Fall 2026)  
-**Team Name:** Mind Masters (`CT-24236`, `CT-24238`)  
+**Team Name:** Mind Masters (`CT-24236`, `CT-24238`,`CT-24075`)  
 **Task Type:** Supervised Learning — Regression  
 
 ---
