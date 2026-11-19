@@ -1,0 +1,260 @@
+brand,model,variant,year,mileage_km,fuel_type,transmission,engine_cc,city,market_supply_count,market_avg_mileage,vehicle_age,km_per_year,province,price_in_pkr,mileage_vs_market
+Suzuki,Alto,VXR,2021,42000,Petrol,Manual,660,Karachi,391.0,39383.0,5,8400.0,Sindh,2350000,1.07
+Suzuki,Alto,VXL AGS,2023,18000,Petrol,Automatic,660,Lahore,201.0,8478.0,3,6000.0,Punjab,2950000,2.12
+Suzuki,Alto,VX,2020,65000,Petrol,Manual,660,Rawalpindi,281.0,46611.0,6,10833.0,Punjab,2050000,1.39
+Suzuki,Alto,VXL AGS,2022,28000,Petrol,Automatic,660,Islamabad,480.0,26650.0,4,7000.0,Islamabad,2780000,1.05
+Suzuki,Alto,VXR,2024,6000,Petrol,Manual,660,Lahore,93.0,1074.0,2,3000.0,Punjab,3100000,5.59
+Suzuki,Cultus,VXL,2019,62000,Petrol,Manual,1000,Lahore,148.0,75254.0,7,8857.0,Punjab,2750000,0.82
+Suzuki,Cultus,Auto Gear Shift,2022,31000,Petrol,Automatic,1000,Karachi,97.0,24989.0,4,7750.0,Sindh,3650000,1.24
+Suzuki,Cultus,VXR,2018,85000,Petrol,Manual,1000,Islamabad,153.0,92790.0,8,10625.0,Islamabad,2400000,0.92
+Suzuki,Cultus,Auto Gear Shift,2023,15000,Petrol,Automatic,1000,Faisalabad,19.0,16860.0,3,5000.0,Punjab,3950000,0.89
+Suzuki,Wagon R,VXR,2017,92000,Petrol,Manual,1000,Karachi,158.0,98157.0,9,10222.0,Sindh,2100000,0.94
+Suzuki,Wagon R,VXL,2021,48000,Petrol,Manual,1000,Lahore,251.0,36998.0,5,9600.0,Punjab,2650000,1.3
+Suzuki,Wagon R,VXL,2022,34000,Petrol,Manual,1000,Multan,208.0,24166.0,4,8500.0,Punjab,2850000,1.41
+Suzuki,Swift,GLX CVT,2023,22000,Petrol,Automatic,1200,Islamabad,62.0,11238.0,3,7333.0,Islamabad,4650000,1.96
+Suzuki,Swift,GL CVT,2022,39000,Petrol,Automatic,1200,Lahore,151.0,26655.0,4,9750.0,Punjab,4200000,1.46
+Suzuki,Swift,DLX 1.3 VVTi,2016,115000,Petrol,Manual,1300,Karachi,61.0,86712.0,10,11500.0,Sindh,2150000,1.33
+Suzuki,Mehran,VXR Euro II,2017,78000,Petrol,Manual,800,Rawalpindi,302.0,69460.0,9,8667.0,Punjab,1050000,1.12
+Suzuki,Mehran,VX Euro II,2014,110000,Petrol,Manual,800,Lahore,146.0,93376.0,12,9167.0,Punjab,820000,1.18
+Suzuki,Mehran,VXR Euro II,2019,54000,Petrol,Manual,800,Karachi,143.0,55091.0,7,7714.0,Sindh,1250000,0.98
+Toyota,Corolla,GLi 1.3 VVTi,2015,125000,Petrol,Manual,1300,Karachi,539.0,115073.0,11,11364.0,Sindh,3250000,1.09
+Toyota,Corolla,Altis 1.6,2018,82000,Petrol,Automatic,1600,Lahore,644.0,79264.0,8,10250.0,Punjab,4250000,1.03
+Toyota,Corolla,Altis Grande 1.8,2021,45000,Petrol,Automatic,1800,Islamabad,398.0,40263.0,5,9000.0,Islamabad,5850000,1.12
+Toyota,Corolla,Altis Grande 1.8,2023,19000,Petrol,Automatic,1800,Lahore,139.0,10700.0,3,6333.0,Punjab,7100000,1.78
+Toyota,Corolla,GLi 1.3 Automatic,2017,95000,Petrol,Automatic,1300,Peshawar,574.0,96684.0,9,10556.0,KPK,3800000,0.98
+Toyota,Corolla,Altis 1.6,2022,36000,Petrol,Automatic,1600,Faisalabad,507.0,23600.0,4,9000.0,Punjab,5600000,1.53
+Toyota,Yaris,ATIV CVT 1.3,2021,51000,Petrol,Automatic,1300,Karachi,351.0,41363.0,5,10200.0,Sindh,4250000,1.23
+Toyota,Yaris,ATIV X CVT 1.5,2022,33000,Petrol,Automatic,1500,Lahore,219.0,25396.0,4,8250.0,Punjab,5150000,1.3
+Toyota,Yaris,GLI MT 1.3,2020,68000,Petrol,Manual,1300,Rawalpindi,221.0,53237.0,6,11333.0,Punjab,3950000,1.28
+Toyota,Yaris,ATIV X CVT 1.5,2024,8000,Petrol,Automatic,1500,Islamabad,19.0,1180.0,2,4000.0,Islamabad,5900000,6.78
+Toyota,Fortuner,2.8 Sigma 4,2021,58000,Diesel,Automatic,2800,Islamabad,121.0,33079.0,5,11600.0,Islamabad,15500000,1.75
+Toyota,Fortuner,2.7 G,2019,72000,Petrol,Automatic,2700,Lahore,35.0,89057.0,7,10286.0,Punjab,12200000,0.81
+Toyota,Prado,TX 2.7,2015,95000,Petrol,Automatic,2700,Karachi,11.0,73636.0,11,8636.0,Sindh,18500000,1.29
+Toyota,Hilux,Revo V 2.8,2021,64000,Diesel,Automatic,2800,Peshawar,117.0,42805.0,5,12800.0,KPK,11800000,1.5
+Toyota,Vitz,F 1.0,2017,77000,Petrol,Automatic,1000,Lahore,89.0,80728.0,9,8556.0,Punjab,3100000,0.95
+Toyota,Passo,X 1.0,2018,68000,Petrol,Automatic,1000,Karachi,52.0,61110.0,8,8500.0,Sindh,3050000,1.11
+Toyota,Prius,S 1.8,2016,98000,Hybrid,Automatic,1800,Islamabad,25.0,126766.0,10,9800.0,Islamabad,5200000,0.77
+Honda,Civic,Oriel 1.8 i-VTEC,2018,76000,Petrol,Automatic,1800,Lahore,445.0,74620.0,8,9500.0,Punjab,4650000,1.02
+Honda,Civic,Oriel 1.8 i-VTEC,2021,48000,Petrol,Automatic,1800,Islamabad,384.0,38455.0,5,9600.0,Islamabad,5750000,1.25
+Honda,Civic,1.5 RS Turbo,2020,55000,Petrol,Automatic,1500,Karachi,253.0,54823.0,6,9167.0,Sindh,6400000,1.0
+Honda,Civic,Oriel 1.8 i-VTEC,2015,118000,Petrol,Automatic,1800,Rawalpindi,87.0,102708.0,11,10727.0,Punjab,3450000,1.15
+Honda,Civic,1.5 Turbo Oriel,2022,28000,Petrol,Automatic,1500,Lahore,172.0,31373.0,4,7000.0,Punjab,8300000,0.89
+Honda,City,1.3 i-VTEC,2016,105000,Petrol,Manual,1300,Karachi,131.0,94696.0,10,10500.0,Sindh,2750000,1.11
+Honda,City,1.5 Aspire,2019,64000,Petrol,Automatic,1500,Lahore,124.0,67205.0,7,9143.0,Punjab,3750000,0.95
+Honda,City,1.2L CVT,2022,34000,Petrol,Automatic,1200,Islamabad,143.0,27806.0,4,8500.0,Islamabad,4650000,1.22
+Honda,City,1.5L Aspire CVT,2023,19000,Petrol,Automatic,1500,Multan,44.0,8086.0,3,6333.0,Punjab,5450000,2.35
+Honda,City,1.3 i-VTEC Prosmatec,2018,82000,Petrol,Automatic,1300,Gujranwala,204.0,78570.0,8,10250.0,Punjab,3350000,1.04
+Honda,Vezel,Hybrid Z,2016,88000,Hybrid,Automatic,1500,Lahore,143.0,94775.0,10,8800.0,Punjab,5250000,0.93
+KIA,Sportage,FWD,2021,49000,Petrol,Automatic,2000,Lahore,336.0,44130.0,5,9800.0,Punjab,6650000,1.11
+KIA,Sportage,AWD,2022,35000,Petrol,Automatic,2000,Islamabad,153.0,22386.0,4,8750.0,Islamabad,7400000,1.56
+KIA,Sportage,Alpha,2021,54000,Petrol,Automatic,2000,Karachi,336.0,44130.0,5,10800.0,Sindh,5850000,1.22
+KIA,Sportage,FWD,2023,21000,Petrol,Automatic,2000,Faisalabad,60.0,9857.0,3,7000.0,Punjab,7350000,2.13
+Hyundai,Tucson,AWD,2021,46000,Petrol,Automatic,2000,Islamabad,107.0,40824.0,5,9200.0,Islamabad,7650000,1.13
+Hyundai,Elantra,GLS,2022,38000,Petrol,Automatic,2000,Lahore,67.0,25151.0,4,9500.0,Punjab,6400000,1.51
+Hyundai,Elantra,GLS,2023,22000,Petrol,Automatic,2000,Karachi,29.0,7753.0,3,7333.0,Sindh,6950000,2.84
+Changan,Alsvin,1.3L MT Comfort,2022,41000,Petrol,Manual,1300,Lahore,105.0,28039.0,4,10250.0,Punjab,3150000,1.46
+Changan,Alsvin,1.5L DCT Lumiere,2023,24000,Petrol,Automatic,1500,Islamabad,11.0,15179.0,3,8000.0,Islamabad,4050000,1.58
+MG,HS,1.5 Turbo,2021,49000,Petrol,Automatic,1500,Lahore,255.0,35391.0,5,9800.0,Punjab,5750000,1.38
+Daihatsu,Mira,ES,2018,66000,Petrol,Automatic,660,Karachi,68.0,61304.0,8,8250.0,Sindh,2750000,1.08
+Daihatsu,Mira,G SA III,2020,47000,Petrol,Automatic,660,Lahore,396.0,32205.0,6,7833.0,Punjab,3250000,1.46
+Audi,e-tron,50 quattro,2021,32000,Electric,Automatic,0,Lahore,35.0,27085.0,5,6400.0,Punjab,23500000,1.18
+Suzuki,Alto,VXR,2022,95451,Petrol,Manual,660,Lahore,480.0,26650.0,4,23863.0,Punjab,2630000,3.58
+Suzuki,Alto,VXL AGS,2020,41075,Petrol,Automatic,660,Rawalpindi,281.0,46611.0,6,6846.0,Punjab,2320000,0.88
+Suzuki,Alto,VX,2022,47286,Petrol,Manual,660,Karachi,480.0,26650.0,4,11822.0,Sindh,2170000,1.77
+Suzuki,Cultus,VXL,2020,125285,Petrol,Manual,1000,Gujranwala,97.0,58759.0,6,20881.0,Punjab,2550000,2.13
+Suzuki,Cultus,Auto Gear Shift,2018,64556,Petrol,Automatic,1000,Lahore,153.0,92790.0,8,8070.0,Punjab,2810000,0.7
+Suzuki,Cultus,VXR,2017,113150,Petrol,Manual,1000,Karachi,167.0,93049.0,9,12572.0,Sindh,1810000,1.22
+Suzuki,Wagon R,VXL,2017,98660,Petrol,Manual,1000,Lahore,158.0,98157.0,9,10962.0,Punjab,1940000,1.01
+Suzuki,Wagon R,VXR,2019,126475,Petrol,Manual,1000,Karachi,204.0,69503.0,7,18068.0,Sindh,1660000,1.82
+Suzuki,Swift,DLX 1.3,2013,183873,Petrol,Manual,1300,Lahore,65.0,114431.0,13,14144.0,Punjab,1500000,1.61
+Suzuki,Swift,GLX CVT,2023,23297,Petrol,Automatic,1200,Lahore,62.0,11238.0,3,7766.0,Punjab,4660000,2.07
+Suzuki,Swift,GL CVT,2024,49059,Petrol,Automatic,1200,Karachi,16.0,711.0,2,24530.0,Sindh,4520000,69.0
+Suzuki,Mehran,VXR Euro II,2012,113654,Petrol,Manual,800,Karachi,169.0,67575.0,14,8118.0,Sindh,650000,1.68
+Suzuki,Mehran,VX Euro II,2017,104457,Petrol,Manual,800,Karachi,302.0,69460.0,9,11606.0,Sindh,650000,1.5
+Suzuki,Every,PZ Turbo,2017,142187,Petrol,Automatic,660,Faisalabad,22.0,108723.0,9,15799.0,Punjab,1890000,1.31
+Toyota,Corolla,Altis 1.6,2022,101594,Petrol,Automatic,1600,Peshawar,507.0,23600.0,4,25398.0,KPK,5850000,4.3
+Toyota,Corolla,Altis Grande 1.8,2019,86807,Petrol,Automatic,1800,Rawalpindi,543.0,72520.0,7,12401.0,Punjab,5570000,1.2
+Toyota,Corolla,GLi 1.3 VVTi,2013,186490,Petrol,Manual,1300,Karachi,330.0,129135.0,13,14345.0,Sindh,2070000,1.44
+Toyota,Corolla,GLi 1.3 Automatic,2018,166065,Petrol,Automatic,1300,Gujranwala,644.0,79264.0,8,20758.0,Punjab,3070000,2.1
+Toyota,Yaris,ATIV X CVT 1.5,2020,42506,Petrol,Automatic,1500,Rawalpindi,221.0,53237.0,6,7084.0,Punjab,4700000,0.8
+Toyota,Yaris,ATIV CVT 1.3,2020,88484,Petrol,Automatic,1300,Lahore,221.0,53237.0,6,14747.0,Punjab,4240000,1.66
+Toyota,Yaris,GLI MT 1.3,2021,63677,Petrol,Manual,1300,Rawalpindi,351.0,41363.0,5,12735.0,Punjab,3800000,1.54
+Toyota,Fortuner,2.8 Sigma 4,2021,73089,Diesel,Automatic,2800,Karachi,121.0,33079.0,5,14618.0,Sindh,15770000,2.21
+Toyota,Fortuner,2.7 G,2021,121608,Petrol,Automatic,2700,Faisalabad,121.0,33079.0,5,24322.0,Punjab,12540000,3.68
+Toyota,Vitz,F 1.0,2014,119653,Petrol,Automatic,1000,Rawalpindi,130.0,101654.0,12,9971.0,Punjab,1860000,1.18
+Toyota,Passo,X 1.0,2019,109882,Petrol,Automatic,1000,Lahore,49.0,52348.0,7,15697.0,Punjab,2660000,2.1
+Toyota,Prius,S 1.8,2014,159908,Hybrid,Automatic,1800,Lahore,99.0,132101.0,12,13326.0,Punjab,3000000,1.21
+Toyota,Prado,TX 2.7,2012,104765,Petrol,Automatic,2700,Karachi,59.0,101449.0,14,7483.0,Sindh,8440000,1.03
+Toyota,Hilux,Revo V 2.8,2021,140294,Diesel,Automatic,2800,Lahore,117.0,42805.0,5,28059.0,Punjab,11020000,3.28
+Honda,Civic,Oriel 1.8 i-VTEC,2017,80758,Petrol,Automatic,1800,Lahore,478.0,88586.0,9,8973.0,Punjab,3530000,0.91
+Honda,Civic,1.5 RS Turbo,2021,45414,Petrol,Automatic,1500,Rawalpindi,384.0,38455.0,5,9083.0,Punjab,7130000,1.18
+Honda,Civic,1.5 Turbo Oriel,2022,27485,Petrol,Automatic,1500,Karachi,172.0,31373.0,4,6871.0,Sindh,7990000,0.88
+Honda,City,1.3 i-VTEC,2015,177966,Petrol,Manual,1300,Rawalpindi,107.0,110787.0,11,16179.0,Punjab,1910000,1.61
+Honda,City,1.5 Aspire,2017,110824,Petrol,Automatic,1500,Karachi,130.0,84612.0,9,12314.0,Sindh,2920000,1.31
+Honda,City,1.2L CVT,2023,49199,Petrol,Automatic,1200,Rawalpindi,44.0,8086.0,3,16400.0,Punjab,4860000,6.08
+Honda,City,1.5L Aspire CVT,2023,29562,Petrol,Automatic,1500,Lahore,44.0,8086.0,3,9854.0,Punjab,5630000,3.66
+Honda,Vezel,Hybrid Z,2014,94065,Hybrid,Automatic,1500,Multan,202.0,112551.0,12,7839.0,Punjab,3000000,0.84
+Honda,BR-V,i-VTEC S,2022,62126,Petrol,Automatic,1500,Lahore,50.0,20908.0,4,15532.0,Punjab,3960000,2.97
+KIA,Sportage,FWD,2020,52805,Petrol,Automatic,2000,Islamabad,236.0,55324.0,6,8801.0,Islamabad,6120000,0.95
+KIA,Sportage,AWD,2022,47158,Petrol,Automatic,2000,Karachi,153.0,22386.0,4,11790.0,Sindh,7540000,2.11
+KIA,Sportage,Alpha,2020,114175,Petrol,Automatic,2000,Karachi,236.0,55324.0,6,19029.0,Sindh,5320000,2.06
+KIA,Picanto,1.0 AT,2023,77862,Petrol,Automatic,1000,Karachi,22.0,8345.0,3,25954.0,Sindh,3060000,9.33
+KIA,Stonic,EX+,2024,37702,Petrol,Automatic,1400,Lahore,5.0,31.0,2,18851.0,Punjab,5370000,1216.19
+Hyundai,Tucson,AWD,2022,51766,Petrol,Automatic,2000,Rawalpindi,108.0,23934.0,4,12942.0,Punjab,7620000,2.16
+Hyundai,Elantra,GLS,2021,71099,Petrol,Automatic,2000,Lahore,34.0,49421.0,5,14220.0,Punjab,6040000,1.44
+Hyundai,Sonata,2.5,2024,57118,Petrol,Automatic,2500,Lahore,3.0,55.0,2,28559.0,Punjab,10550000,1038.51
+Changan,Alsvin,1.3L MT Comfort,2024,26364,Petrol,Manual,1300,Islamabad,8.0,4202.0,2,13182.0,Islamabad,3630000,6.27
+Changan,Alsvin,1.5L DCT Lumiere,2023,62402,Petrol,Automatic,1500,Karachi,11.0,15179.0,3,20801.0,Sindh,4350000,4.11
+MG,HS,1.5 Turbo,2023,34287,Petrol,Automatic,1500,Lahore,31.0,9482.0,3,11429.0,Punjab,6660000,3.62
+Daihatsu,Mira,ES,2016,143771,Petrol,Automatic,660,Islamabad,28.0,100398.0,10,14377.0,Islamabad,1900000,1.43
+Suzuki,Alto,VXR,2020,105126,Petrol,Manual,660,Karachi,281.0,46611.0,6,17521.0,Sindh,2310000,2.26
+Suzuki,Alto,VXL AGS,2022,35372,Petrol,Automatic,660,Lahore,480.0,26650.0,4,8843.0,Punjab,2970000,1.33
+Suzuki,Alto,VX,2019,65590,Petrol,Manual,660,Faisalabad,140.0,61100.0,7,9370.0,Punjab,1520000,1.07
+Suzuki,Cultus,VXL,2021,114437,Petrol,Manual,1000,Karachi,221.0,46199.0,5,22887.0,Sindh,2790000,2.48
+Suzuki,Cultus,Auto Gear Shift,2020,89624,Petrol,Automatic,1000,Faisalabad,97.0,58759.0,6,14937.0,Punjab,3320000,1.53
+Suzuki,Cultus,VXR,2017,125697,Petrol,Manual,1000,Karachi,167.0,93049.0,9,13966.0,Sindh,1720000,1.35
+Suzuki,Wagon R,VXL,2020,118595,Petrol,Manual,1000,Lahore,199.0,40263.0,6,19766.0,Punjab,2270000,2.95
+Suzuki,Wagon R,VXR,2015,148947,Petrol,Manual,1000,Karachi,81.0,106904.0,11,13541.0,Sindh,1050000,1.39
+Suzuki,Swift,DLX 1.3,2011,138561,Petrol,Manual,1300,Gujranwala,47.0,130101.0,15,9237.0,Punjab,1240000,1.07
+Suzuki,Swift,GLX CVT,2022,22849,Petrol,Automatic,1200,Karachi,151.0,26655.0,4,5712.0,Sindh,4300000,0.86
+Suzuki,Swift,GL CVT,2024,54163,Petrol,Automatic,1200,Lahore,16.0,711.0,2,27082.0,Punjab,4360000,76.18
+Suzuki,Mehran,VXR Euro II,2014,121081,Petrol,Manual,800,Karachi,146.0,93376.0,12,10090.0,Sindh,650000,1.3
+Suzuki,Mehran,VX Euro II,2017,187720,Petrol,Manual,800,Faisalabad,302.0,69460.0,9,20858.0,Punjab,650000,2.7
+Suzuki,Every,PZ Turbo,2018,138712,Petrol,Automatic,660,Lahore,57.0,87504.0,8,17339.0,Punjab,1940000,1.59
+Toyota,Corolla,Altis 1.6,2015,79748,Petrol,Automatic,1600,Karachi,539.0,115073.0,11,7250.0,Sindh,3670000,0.69
+Toyota,Corolla,Altis Grande 1.8,2017,144143,Petrol,Automatic,1800,Gujranwala,574.0,96684.0,9,16016.0,Punjab,4780000,1.49
+Toyota,Corolla,GLi 1.3 VVTi,2017,184793,Petrol,Manual,1300,Lahore,574.0,96684.0,9,20533.0,Punjab,2880000,1.91
+Toyota,Corolla,GLi 1.3 Automatic,2014,184884,Petrol,Automatic,1300,Lahore,391.0,126556.0,12,15407.0,Punjab,2350000,1.46
+Toyota,Yaris,ATIV X CVT 1.5,2022,87682,Petrol,Automatic,1500,Karachi,219.0,25396.0,4,21920.0,Sindh,5220000,3.45
+Toyota,Yaris,ATIV CVT 1.3,2020,57719,Petrol,Automatic,1300,Lahore,221.0,53237.0,6,9620.0,Punjab,4050000,1.08
+Toyota,Yaris,GLI MT 1.3,2022,97004,Petrol,Manual,1300,Karachi,219.0,25396.0,4,24251.0,Sindh,4270000,3.82
+Toyota,Fortuner,2.8 Sigma 4,2019,111190,Diesel,Automatic,2800,Karachi,35.0,89057.0,7,15884.0,Sindh,14250000,1.25
+Toyota,Fortuner,2.7 G,2019,83777,Petrol,Automatic,2700,Rawalpindi,35.0,89057.0,7,11968.0,Punjab,10950000,0.94
+Toyota,Vitz,F 1.0,2014,156083,Petrol,Automatic,1000,Karachi,130.0,101654.0,12,13007.0,Sindh,1680000,1.54
+Toyota,Passo,X 1.0,2016,150061,Petrol,Automatic,1000,Faisalabad,32.0,112109.0,10,15006.0,Punjab,2180000,1.34
+Toyota,Prius,S 1.8,2015,83554,Hybrid,Automatic,1800,Karachi,34.0,113992.0,11,7596.0,Sindh,3440000,0.73
+Toyota,Prado,TX 2.7,2017,159302,Petrol,Automatic,2700,Faisalabad,71.0,53966.0,9,17700.0,Punjab,14490000,2.95
+Toyota,Hilux,Revo V 2.8,2021,105780,Diesel,Automatic,2800,Islamabad,117.0,42805.0,5,21156.0,Islamabad,11080000,2.47
+Honda,Civic,Oriel 1.8 i-VTEC,2017,111474,Petrol,Automatic,1800,Karachi,478.0,88586.0,9,12386.0,Sindh,3410000,1.26
+Honda,Civic,1.5 RS Turbo,2020,104832,Petrol,Automatic,1500,Karachi,253.0,54823.0,6,17472.0,Sindh,6480000,1.91
+Honda,Civic,1.5 Turbo Oriel,2024,32568,Petrol,Automatic,1500,Lahore,12.0,214.0,2,16284.0,Punjab,8690000,152.19
+Honda,City,1.3 i-VTEC,2016,106227,Petrol,Manual,1300,Lahore,131.0,94696.0,10,10623.0,Punjab,2210000,1.12
+Honda,City,1.5 Aspire,2019,67253,Petrol,Automatic,1500,Lahore,124.0,67205.0,7,9608.0,Punjab,3210000,1.0
+Honda,City,1.2L CVT,2023,32162,Petrol,Automatic,1200,Peshawar,44.0,8086.0,3,10721.0,KPK,4650000,3.98
+Honda,City,1.5L Aspire CVT,2022,41762,Petrol,Automatic,1500,Karachi,143.0,27806.0,4,10440.0,Sindh,5470000,1.5
+Honda,Vezel,Hybrid Z,2017,147892,Hybrid,Automatic,1500,Karachi,91.0,80005.0,9,16432.0,Sindh,3730000,1.85
+Honda,BR-V,i-VTEC S,2022,118910,Petrol,Automatic,1500,Lahore,50.0,20908.0,4,29728.0,Punjab,4000000,5.69
+KIA,Sportage,FWD,2021,98641,Petrol,Automatic,2000,Karachi,336.0,44130.0,5,19728.0,Sindh,6560000,2.24
+KIA,Sportage,AWD,2020,81194,Petrol,Automatic,2000,Peshawar,236.0,55324.0,6,13532.0,KPK,6730000,1.47
+KIA,Sportage,Alpha,2022,79312,Petrol,Automatic,2000,Islamabad,153.0,22386.0,4,19828.0,Islamabad,6030000,3.54
+KIA,Picanto,1.0 AT,2022,44616,Petrol,Automatic,1000,Islamabad,98.0,17643.0,4,11154.0,Islamabad,2920000,2.53
+KIA,Stonic,EX+,2021,45119,Petrol,Automatic,1400,Karachi,21.0,35067.0,5,9024.0,Sindh,4480000,1.29
+Hyundai,Tucson,AWD,2023,35221,Petrol,Automatic,2000,Islamabad,61.0,11422.0,3,11740.0,Islamabad,7960000,3.08
+Hyundai,Elantra,GLS,2021,60775,Petrol,Automatic,2000,Lahore,34.0,49421.0,5,12155.0,Punjab,5900000,1.23
+Hyundai,Sonata,2.5,2023,23499,Petrol,Automatic,2500,Faisalabad,39.0,10682.0,3,7833.0,Punjab,10230000,2.2
+Changan,Alsvin,1.3L MT Comfort,2024,45727,Petrol,Manual,1300,Lahore,8.0,4202.0,2,22864.0,Punjab,3640000,10.88
+Changan,Alsvin,1.5L DCT Lumiere,2021,62362,Petrol,Automatic,1500,Lahore,130.0,38816.0,5,12472.0,Punjab,3880000,1.61
+MG,HS,1.5 Turbo,2023,79710,Petrol,Automatic,1500,Lahore,31.0,9482.0,3,26570.0,Punjab,6710000,8.41
+Daihatsu,Mira,ES,2018,108094,Petrol,Automatic,660,Lahore,68.0,61304.0,8,13512.0,Punjab,2120000,1.76
+Suzuki,Alto,VXR,2019,101707,Petrol,Manual,660,Lahore,140.0,61100.0,7,14530.0,Punjab,2120000,1.66
+Suzuki,Alto,VXL AGS,2019,104128,Petrol,Automatic,660,Karachi,140.0,61100.0,7,14875.0,Sindh,2380000,1.7
+Suzuki,Alto,VX,2023,48806,Petrol,Manual,660,Karachi,201.0,8478.0,3,16269.0,Sindh,2240000,5.76
+Suzuki,Cultus,VXL,2018,111617,Petrol,Manual,1000,Karachi,153.0,92790.0,8,13952.0,Sindh,2210000,1.2
+Suzuki,Cultus,Auto Gear Shift,2019,91210,Petrol,Automatic,1000,Karachi,148.0,75254.0,7,13030.0,Sindh,2950000,1.21
+Suzuki,Cultus,VXR,2020,115903,Petrol,Manual,1000,Multan,97.0,58759.0,6,19317.0,Punjab,2300000,1.97
+Suzuki,Wagon R,VXL,2022,115652,Petrol,Manual,1000,Karachi,208.0,24166.0,4,28913.0,Sindh,2640000,4.79
+Suzuki,Wagon R,VXR,2016,117933,Petrol,Manual,1000,Lahore,81.0,109519.0,10,11793.0,Punjab,1360000,1.08
+Suzuki,Swift,DLX 1.3,2012,129499,Petrol,Manual,1300,Islamabad,75.0,126530.0,14,9250.0,Islamabad,1330000,1.02
+Suzuki,Swift,GLX CVT,2024,54161,Petrol,Automatic,1200,Lahore,16.0,711.0,2,27080.0,Punjab,5010000,76.18
+Suzuki,Swift,GL CVT,2022,65475,Petrol,Automatic,1200,Lahore,151.0,26655.0,4,16369.0,Punjab,3780000,2.46
+Suzuki,Mehran,VXR Euro II,2012,139040,Petrol,Manual,800,Karachi,169.0,67575.0,14,9931.0,Sindh,650000,2.06
+Suzuki,Mehran,VX Euro II,2014,100898,Petrol,Manual,800,Peshawar,146.0,93376.0,12,8408.0,KPK,650000,1.08
+Suzuki,Every,PZ Turbo,2018,72580,Petrol,Automatic,660,Peshawar,57.0,87504.0,8,9072.0,KPK,1890000,0.83
+Toyota,Corolla,Altis 1.6,2018,120840,Petrol,Automatic,1600,Lahore,644.0,79264.0,8,15105.0,Punjab,4600000,1.52
+Toyota,Corolla,Altis Grande 1.8,2017,122714,Petrol,Automatic,1800,Karachi,574.0,96684.0,9,13635.0,Sindh,4940000,1.27
+Toyota,Corolla,GLi 1.3 VVTi,2016,167073,Petrol,Manual,1300,Karachi,501.0,108780.0,10,16707.0,Sindh,2670000,1.54
+Toyota,Corolla,GLi 1.3 Automatic,2015,187115,Petrol,Automatic,1300,Karachi,539.0,115073.0,11,17010.0,Sindh,2750000,1.63
+Toyota,Yaris,ATIV X CVT 1.5,2022,81476,Petrol,Automatic,1500,Karachi,219.0,25396.0,4,20369.0,Sindh,5310000,3.21
+Toyota,Yaris,ATIV CVT 1.3,2023,71474,Petrol,Automatic,1300,Rawalpindi,30.0,6571.0,3,23825.0,Punjab,4940000,10.88
+Toyota,Yaris,GLI MT 1.3,2021,41728,Petrol,Manual,1300,Karachi,351.0,41363.0,5,8346.0,Sindh,3980000,1.01
+Toyota,Fortuner,2.8 Sigma 4,2019,140541,Diesel,Automatic,2800,Lahore,35.0,89057.0,7,20077.0,Punjab,13990000,1.58
+Toyota,Fortuner,2.7 G,2022,142637,Petrol,Automatic,2700,Lahore,157.0,18640.0,4,35659.0,Punjab,13210000,7.65
+Toyota,Vitz,F 1.0,2017,92325,Petrol,Automatic,1000,Lahore,89.0,80728.0,9,10258.0,Punjab,2380000,1.14
+Toyota,Passo,X 1.0,2018,96249,Petrol,Automatic,1000,Islamabad,52.0,61110.0,8,12031.0,Islamabad,2290000,1.58
+Toyota,Prius,S 1.8,2019,142213,Hybrid,Automatic,1800,Karachi,50.0,85000.0,7,20316.0,Sindh,4440000,1.67
+Toyota,Prado,TX 2.7,2015,140784,Petrol,Automatic,2700,Lahore,11.0,73636.0,11,12799.0,Punjab,11850000,1.91
+Toyota,Hilux,Revo V 2.8,2019,133248,Diesel,Automatic,2800,Rawalpindi,34.0,64586.0,7,19035.0,Punjab,9980000,2.06
+Honda,Civic,Oriel 1.8 i-VTEC,2021,123334,Petrol,Automatic,1800,Peshawar,384.0,38455.0,5,24667.0,KPK,4830000,3.21
+Honda,Civic,1.5 RS Turbo,2022,51142,Petrol,Automatic,1500,Karachi,172.0,31373.0,4,12786.0,Sindh,7560000,1.63
+Honda,Civic,1.5 Turbo Oriel,2023,58303,Petrol,Automatic,1500,Lahore,26.0,6288.0,3,19434.0,Punjab,8540000,9.27
+Honda,City,1.3 i-VTEC,2016,79991,Petrol,Manual,1300,Faisalabad,131.0,94696.0,10,7999.0,Punjab,2200000,0.84
+Honda,City,1.5 Aspire,2017,135124,Petrol,Automatic,1500,Lahore,130.0,84612.0,9,15014.0,Punjab,2940000,1.6
+Honda,City,1.2L CVT,2021,44092,Petrol,Automatic,1200,Gujranwala,89.0,41300.0,5,8818.0,Punjab,4260000,1.07
+Honda,City,1.5L Aspire CVT,2022,56137,Petrol,Automatic,1500,Karachi,143.0,27806.0,4,14034.0,Sindh,5500000,2.02
+Honda,Vezel,Hybrid Z,2017,169787,Hybrid,Automatic,1500,Lahore,91.0,80005.0,9,18865.0,Punjab,3670000,2.12
+Honda,BR-V,i-VTEC S,2020,80894,Petrol,Automatic,1500,Lahore,59.0,58601.0,6,13482.0,Punjab,3400000,1.38
+KIA,Sportage,FWD,2021,47204,Petrol,Automatic,2000,Lahore,336.0,44130.0,5,9441.0,Punjab,6510000,1.07
+KIA,Sportage,AWD,2023,87117,Petrol,Automatic,2000,Lahore,60.0,9857.0,3,29039.0,Punjab,8060000,8.84
+KIA,Sportage,Alpha,2020,70074,Petrol,Automatic,2000,Karachi,236.0,55324.0,6,11679.0,Sindh,5380000,1.27
+KIA,Picanto,1.0 AT,2020,95210,Petrol,Automatic,1000,Multan,54.0,57849.0,6,15868.0,Punjab,2700000,1.65
+KIA,Stonic,EX+,2024,43571,Petrol,Automatic,1400,Karachi,5.0,31.0,2,21786.0,Sindh,5480000,1405.52
+Hyundai,Tucson,AWD,2021,68611,Petrol,Automatic,2000,Lahore,107.0,40824.0,5,13722.0,Punjab,7200000,1.68
+Hyundai,Elantra,GLS,2022,77254,Petrol,Automatic,2000,Karachi,67.0,25151.0,4,19314.0,Sindh,6500000,3.07
+Hyundai,Sonata,2.5,2021,70475,Petrol,Automatic,2500,Rawalpindi,56.0,34770.0,5,14095.0,Punjab,8970000,2.03
+Changan,Alsvin,1.3L MT Comfort,2021,89168,Petrol,Manual,1300,Lahore,130.0,38816.0,5,17834.0,Punjab,2990000,2.3
+Changan,Alsvin,1.5L DCT Lumiere,2021,30820,Petrol,Automatic,1500,Islamabad,130.0,38816.0,5,6164.0,Islamabad,3690000,0.79
+MG,HS,1.5 Turbo,2021,94981,Petrol,Automatic,1500,Lahore,255.0,35391.0,5,18996.0,Punjab,5850000,2.68
+Daihatsu,Mira,ES,2019,117076,Petrol,Automatic,660,Lahore,61.0,48556.0,7,16725.0,Punjab,2380000,2.41
+Suzuki,Alto,VXR,2023,55087,Petrol,Manual,660,Peshawar,201.0,8478.0,3,18362.0,KPK,2630000,6.5
+Suzuki,Alto,VXL AGS,2023,33848,Petrol,Automatic,660,Islamabad,201.0,8478.0,3,11283.0,Islamabad,3130000,3.99
+Suzuki,Alto,VX,2020,70936,Petrol,Manual,660,Islamabad,281.0,46611.0,6,11823.0,Islamabad,1680000,1.52
+Suzuki,Cultus,VXL,2018,91144,Petrol,Manual,1000,Karachi,153.0,92790.0,8,11393.0,Sindh,2440000,0.98
+Suzuki,Cultus,Auto Gear Shift,2018,85360,Petrol,Automatic,1000,Rawalpindi,153.0,92790.0,8,10670.0,Punjab,2820000,0.92
+Suzuki,Cultus,VXR,2017,120125,Petrol,Manual,1000,Lahore,167.0,93049.0,9,13347.0,Punjab,1830000,1.29
+Suzuki,Wagon R,VXL,2019,117955,Petrol,Manual,1000,Karachi,204.0,69503.0,7,16851.0,Sindh,2160000,1.7
+Suzuki,Wagon R,VXR,2020,122750,Petrol,Manual,1000,Lahore,199.0,40263.0,6,20458.0,Punjab,2040000,3.05
+Suzuki,Swift,DLX 1.3,2011,129224,Petrol,Manual,1300,Faisalabad,47.0,130101.0,15,8615.0,Punjab,1240000,0.99
+Suzuki,Swift,GLX CVT,2022,46157,Petrol,Automatic,1200,Lahore,151.0,26655.0,4,11539.0,Punjab,4390000,1.73
+Suzuki,Swift,GL CVT,2024,45085,Petrol,Automatic,1200,Islamabad,16.0,711.0,2,22542.0,Islamabad,4480000,63.41
+Suzuki,Mehran,VXR Euro II,2013,182218,Petrol,Manual,800,Karachi,157.0,69159.0,13,14017.0,Sindh,650000,2.63
+Suzuki,Mehran,VX Euro II,2016,187903,Petrol,Manual,800,Karachi,233.0,84489.0,10,18790.0,Sindh,650000,2.22
+Suzuki,Every,PZ Turbo,2018,118487,Petrol,Automatic,660,Lahore,57.0,87504.0,8,14811.0,Punjab,1890000,1.35
+Toyota,Corolla,Altis 1.6,2021,51005,Petrol,Automatic,1600,Karachi,398.0,40263.0,5,10201.0,Sindh,5420000,1.27
+Toyota,Corolla,Altis Grande 1.8,2022,50527,Petrol,Automatic,1800,Lahore,507.0,23600.0,4,12632.0,Punjab,6780000,2.14
+Toyota,Corolla,GLi 1.3 VVTi,2019,127401,Petrol,Manual,1300,Karachi,543.0,72520.0,7,18200.0,Sindh,3170000,1.76
+Toyota,Corolla,GLi 1.3 Automatic,2015,103071,Petrol,Automatic,1300,Karachi,539.0,115073.0,11,9370.0,Sindh,2700000,0.9
+Toyota,Yaris,ATIV X CVT 1.5,2021,37390,Petrol,Automatic,1500,Karachi,351.0,41363.0,5,7478.0,Sindh,4980000,0.9
+Toyota,Yaris,ATIV CVT 1.3,2020,60767,Petrol,Automatic,1300,Karachi,221.0,53237.0,6,10128.0,Sindh,4270000,1.14
+Toyota,Yaris,GLI MT 1.3,2021,90231,Petrol,Manual,1300,Islamabad,351.0,41363.0,5,18046.0,Islamabad,3780000,2.18
+Toyota,Fortuner,2.8 Sigma 4,2018,123968,Diesel,Automatic,2800,Karachi,79.0,68947.0,8,15496.0,Sindh,13200000,1.8
+Toyota,Fortuner,2.7 G,2021,45272,Petrol,Automatic,2700,Karachi,121.0,33079.0,5,9054.0,Sindh,12610000,1.37
+Toyota,Vitz,F 1.0,2016,90297,Petrol,Automatic,1000,Lahore,26.0,92806.0,10,9030.0,Punjab,1990000,0.97
+Toyota,Passo,X 1.0,2020,74958,Petrol,Automatic,1000,Lahore,214.0,31311.0,6,12493.0,Punjab,2830000,2.39
+Toyota,Prius,S 1.8,2015,162979,Hybrid,Automatic,1800,Karachi,34.0,113992.0,11,14816.0,Sindh,3260000,1.43
+Toyota,Prado,TX 2.7,2016,158716,Petrol,Automatic,2700,Islamabad,41.0,62049.0,10,15872.0,Islamabad,13300000,2.56
+Toyota,Hilux,Revo V 2.8,2021,56253,Diesel,Automatic,2800,Lahore,117.0,42805.0,5,11251.0,Punjab,11080000,1.31
+Honda,Civic,Oriel 1.8 i-VTEC,2021,56011,Petrol,Automatic,1800,Karachi,384.0,38455.0,5,11202.0,Sindh,4870000,1.46
+Honda,Civic,1.5 RS Turbo,2019,108778,Petrol,Automatic,1500,Lahore,309.0,68239.0,7,15540.0,Punjab,5980000,1.59
+Honda,Civic,1.5 Turbo Oriel,2022,68307,Petrol,Automatic,1500,Islamabad,172.0,31373.0,4,17077.0,Islamabad,8030000,2.18
+Honda,City,1.3 i-VTEC,2014,151721,Petrol,Manual,1300,Lahore,66.0,126627.0,12,12643.0,Punjab,1720000,1.2
+Honda,City,1.5 Aspire,2019,132007,Petrol,Automatic,1500,Lahore,124.0,67205.0,7,18858.0,Punjab,3270000,1.96
+Honda,City,1.2L CVT,2023,46347,Petrol,Automatic,1200,Faisalabad,44.0,8086.0,3,15449.0,Punjab,4710000,5.73
+Honda,City,1.5L Aspire CVT,2024,45968,Petrol,Automatic,1500,Gujranwala,14.0,8193.0,2,22984.0,Punjab,5820000,5.61
+Honda,Vezel,Hybrid Z,2018,161435,Hybrid,Automatic,1500,Karachi,284.0,61168.0,8,20179.0,Sindh,3900000,2.64
+Honda,BR-V,i-VTEC S,2022,64628,Petrol,Automatic,1500,Karachi,50.0,20908.0,4,16157.0,Sindh,3840000,3.09
+KIA,Sportage,FWD,2020,39258,Petrol,Automatic,2000,Lahore,236.0,55324.0,6,6543.0,Punjab,6210000,0.71
+KIA,Sportage,AWD,2023,87824,Petrol,Automatic,2000,Lahore,60.0,9857.0,3,29275.0,Punjab,8120000,8.91
+KIA,Sportage,Alpha,2022,94316,Petrol,Automatic,2000,Karachi,153.0,22386.0,4,23579.0,Sindh,6150000,4.21
+KIA,Picanto,1.0 AT,2023,67482,Petrol,Automatic,1000,Islamabad,22.0,8345.0,3,22494.0,Islamabad,3240000,8.09
+KIA,Stonic,EX+,2023,47865,Petrol,Automatic,1400,Islamabad,23.0,12268.0,3,15955.0,Islamabad,5030000,3.9
+Hyundai,Tucson,AWD,2021,52657,Petrol,Automatic,2000,Lahore,107.0,40824.0,5,10531.0,Punjab,7280000,1.29
+Hyundai,Elantra,GLS,2021,64439,Petrol,Automatic,2000,Islamabad,34.0,49421.0,5,12888.0,Islamabad,6060000,1.3
+Hyundai,Sonata,2.5,2022,55968,Petrol,Automatic,2500,Lahore,63.0,22730.0,4,13992.0,Punjab,9450000,2.46
+Changan,Alsvin,1.3L MT Comfort,2023,63226,Petrol,Manual,1300,Lahore,11.0,15179.0,3,21075.0,Punjab,3360000,4.17
+Changan,Alsvin,1.5L DCT Lumiere,2021,33802,Petrol,Automatic,1500,Karachi,130.0,38816.0,5,6760.0,Sindh,3970000,0.87
+MG,HS,1.5 Turbo,2022,32447,Petrol,Automatic,1500,Karachi,62.0,23951.0,4,8112.0,Sindh,6040000,1.35
+Daihatsu,Mira,ES,2015,124350,Petrol,Automatic,660,Lahore,80.0,94798.0,11,11305.0,Punjab,1690000,1.31
+Suzuki,Alto,VXR,2024,28042,Petrol,Manual,660,Islamabad,93.0,1074.0,2,14021.0,Islamabad,3030000,26.11
+Suzuki,Alto,VXL AGS,2020,38825,Petrol,Automatic,660,Multan,281.0,46611.0,6,6471.0,Punjab,2520000,0.83
+Suzuki,Alto,VX,2022,64304,Petrol,Manual,660,Islamabad,480.0,26650.0,4,16076.0,Islamabad,2250000,2.41
+Suzuki,Cultus,VXL,2020,116290,Petrol,Manual,1000,Islamabad,97.0,58759.0,6,19382.0,Islamabad,2590000,1.98
