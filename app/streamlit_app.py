@@ -1,45 +1,37 @@
 """
-KaarWala - Fair Market Price Estimator (Streamlit app, Member 3)
+KaarWala - Streamlit front end (deployment 1)
 
 Run from the project root:
     streamlit run app/streamlit_app.py
 """
 
+import sys
 from pathlib import Path
 
-import joblib
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import sklearn
 import streamlit as st
 
-# ----------------------------------------------------------------------------
-# Paths and constants
-# ----------------------------------------------------------------------------
-ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = ROOT / "models" / "kaarwala_pipeline.joblib"
-MERGED_PATH = ROOT / "data" / "kaarwala_merged.csv"
-LOOKUP_PATH = ROOT / "data" / "market_lookup.csv"
+APP_DIR = Path(__file__).resolve().parent
+if str(APP_DIR) not in sys.path:
+    sys.path.insert(0, str(APP_DIR))
 
-CURRENT_YEAR = 2026
-MIN_YEAR = 1961
-MAX_MILEAGE = 1_000_000
-MIN_ENGINE_CC = 50
-MAX_ENGINE_CC = 8000
-MIN_PRICE = 150_000
-TEST_MAE = 479_339
-LUXURY_THRESHOLD = 10_000_000
-LOOKUP_CAP_YEAR = 2024
+from features import (  # noqa: E402
+    CURRENT_YEAR,
+    LUXURY_THRESHOLD,
+    MAX_ENGINE_CC,
+    MAX_MILEAGE,
+    MIN_ENGINE_CC,
+    MIN_YEAR,
+    TEST_MAE,
+    estimate,
+    get_options,
+    load_model,
+    load_reference,
+)
 
-FEATURES = [
-    "brand", "model", "variant", "year", "mileage_km", "fuel_type",
-    "transmission", "engine_cc", "city", "market_supply_count",
-    "market_avg_mileage", "vehicle_age", "km_per_year", "province",
-    "mileage_vs_market",
-]
-
-# Colours (light theme)
+# Light theme colours
 BG = "#f5f7fb"
 CARD = "#ffffff"
 BORDER = "#e2e8f0"
@@ -47,149 +39,8 @@ TEXT = "#0f172a"
 MUTED = "#64748b"
 ACCENT = "#f97316"
 ACCENT2 = "#ec4899"
-GOOD = "#16a34a"
-BAD = "#dc2626"
 INFO = "#0284c7"
 
-# City -> province lists (copied from notebook 01)
-SINDH_LIST = [
-    "Karachi", "Mehrabpur", "Nawabshah", "Hyderabad", "Sukkur", "Shahdadpur",
-    "Jacobabad", "Ghotki", "Mirpur Mathelo", "Moro", "Larkana", "Noudero",
-    "Mirpur Khas", "Badin", "Khairpur Mir", "Tando Adam", "Dadu", "Daulatpur",
-    "Pano Aqil", "Sanghar", "Daharki", "Makli", "Tando Muhammad Khan",
-    "Thatta", "Shikarpur", "Umerkot", "Kotri", "Jamshoro", "Tando Allahyar",
-    "Matiari", "Kandhkot", "Kashmore", "Tharparkar", "Mithi", "Sujawal", "Hala",
-    "Sehwan",
-]
-KPK_LIST = [
-    "Peshawar", "Mardan", "Abbottabad", "Mansehra", "Haripur", "Swabi",
-    "Tarbela", "Kohat", "Buner", "Charsadda", "Topi", "Swat", "Nowshera",
-    "Takhtbai", "Ghazi", "Dera Ismail Khan", "Jehangira", "Risalpur",
-    "Swatmingora", "Mingora", "Bannu", "Nowshera Cantt", "Qalandarabad",
-    "Akora Khattak", "Saidu Sharif", "Malakand Agency", "Chitral", "Dir",
-    "Timergara", "Karak", "Hangu", "Tank", "Lakki Marwat", "Batkhela",
-    "Shabqadar", "Parachinar", "Besham", "Balakot", "Naran",
-]
-BALOCHISTAN_LIST = [
-    "Quetta", "Gwadar", "Hub", "Khuzdar", "Turbat", "Chaman", "Sibi", "Zhob",
-    "Loralai", "Pishin", "Kalat", "Mastung", "Pasni", "Ormara",
-    "Dera Murad Jamali", "Usta Mohammad", "Lasbela", "Ziarat", "Nushki",
-]
-AJK_LIST = [
-    "Mirpur Ak", "Dadyal Ak", "Muzaffarabad", "Mangla", "Bhimber", "Kashmir",
-    "Hattian", "Rawalakot", "Kotli", "Bagh", "Neelum", "Sudhanoti", "Haveli",
-    "Gilgit", "Skardu", "Hunza",
-]
-
-
-def get_province(city: str) -> str:
-    if city == "Islamabad":
-        return "Islamabad"
-    if city in SINDH_LIST:
-        return "Sindh"
-    if city in KPK_LIST:
-        return "KPK"
-    if city in BALOCHISTAN_LIST:
-        return "Balochistan"
-    if city in AJK_LIST:
-        return "AJK"
-    return "Punjab"
-
-
-# ----------------------------------------------------------------------------
-# Loading (cached)
-# ----------------------------------------------------------------------------
-@st.cache_resource
-def load_model():
-    return joblib.load(MODEL_PATH)
-
-
-@st.cache_data
-def load_reference() -> pd.DataFrame:
-    return pd.read_csv(MERGED_PATH)
-
-
-@st.cache_data
-def load_lookup() -> pd.DataFrame:
-    lookup = pd.read_csv(LOOKUP_PATH)
-    lookup["brand_k"] = lookup["brand"].astype(str).str.strip().str.lower()
-    lookup["model_k"] = lookup["model"].astype(str).str.strip().str.lower()
-    return lookup
-
-
-# ----------------------------------------------------------------------------
-# Backend feature building
-# ----------------------------------------------------------------------------
-def market_stats(lookup: pd.DataFrame, brand: str, model: str, year: int):
-    b = brand.strip().lower()
-    m = model.strip().lower()
-    capped_year = min(year, LOOKUP_CAP_YEAR)
-
-    rows = lookup[(lookup["brand_k"] == b) & (lookup["model_k"] == m)]
-    rows = rows.dropna(subset=["market_avg_mileage"])
-    if rows.empty:
-        return None, None, "none"
-
-    exact = rows[rows["year"] == capped_year]
-    if not exact.empty:
-        return (float(exact["market_supply_count"].iloc[0]),
-                float(exact["market_avg_mileage"].iloc[0]),
-                "exact")
-
-    return (float(rows["market_supply_count"].median()),
-            float(rows["market_avg_mileage"].median()),
-            "model")
-
-
-def build_features(inp: dict, reference: pd.DataFrame, lookup: pd.DataFrame):
-    year = inp["year"]
-    mileage = float(inp["mileage"])
-    vehicle_age = max(CURRENT_YEAR - year, 0)
-    fuel = inp["fuel_type"]
-
-    supply, avg, source = market_stats(lookup, inp["brand"], inp["model"], year)
-    if source == "none":
-        supply = float(reference["market_supply_count"].median())
-        avg = float(reference["market_avg_mileage"].median())
-
-    row = {
-        "brand": inp["brand"],
-        "model": inp["model"],
-        "variant": inp["variant"] if inp["variant"] else np.nan,
-        "year": year,
-        "mileage_km": mileage,
-        "fuel_type": fuel,
-        "transmission": inp["transmission"],
-        "engine_cc": 0.0 if fuel == "Electric" else float(inp["engine_cc"]),
-        "city": inp["city"],
-        "market_supply_count": supply,
-        "market_avg_mileage": avg,
-        "vehicle_age": vehicle_age,
-        "km_per_year": round(mileage / max(vehicle_age, 1)),
-        "province": get_province(inp["city"]),
-        "mileage_vs_market": mileage / avg,
-    }
-    return pd.DataFrame([row], columns=FEATURES), source
-
-
-def validate(inp: dict) -> list:
-    errors = []
-    if not inp["brand"] or not inp["model"]:
-        errors.append("Please select a brand and model.")
-    if not (MIN_YEAR <= inp["year"] <= CURRENT_YEAR):
-        errors.append(f"Model year must be between {MIN_YEAR} and {CURRENT_YEAR}.")
-    if not (0 <= inp["mileage"] <= MAX_MILEAGE):
-        errors.append(f"Mileage must be between 0 and {MAX_MILEAGE:,} km.")
-    if inp["fuel_type"] != "Electric" and not (MIN_ENGINE_CC <= inp["engine_cc"] <= MAX_ENGINE_CC):
-        errors.append(f"Engine capacity must be between {MIN_ENGINE_CC} and {MAX_ENGINE_CC:,} cc.")
-    if inp["asking_price"] < 0:
-        errors.append("Asking price cannot be negative.")
-    return errors
-
-
-# ----------------------------------------------------------------------------
-# Styling (light theme)
-# ----------------------------------------------------------------------------
 CSS = f"""
 <style>
     html, body, [class*="css"] {{
@@ -291,9 +142,7 @@ CSS = f"""
         color: #92400e; font-size: .88rem;
     }}
 
-    .placeholder {{
-        text-align: center; padding: 3.5rem 1.5rem; color: {MUTED};
-    }}
+    .placeholder {{ text-align: center; padding: 3.5rem 1.5rem; color: {MUTED}; }}
     .placeholder .icon {{ font-size: 3.2rem; margin-bottom: .6rem; }}
     .placeholder h3 {{ color: {TEXT}; margin: .2rem 0 .4rem 0; font-weight: 700; }}
 
@@ -336,7 +185,16 @@ def chips_html(items: list) -> str:
     return f'<div class="chips">{inner}</div>'
 
 
-def result_html(predicted: float, low: float, high: float, source: str) -> str:
+def fmt_pkr(value: float) -> str:
+    if value >= 10_000_000:
+        return f"PKR {value / 10_000_000:.2f} Cr"
+    return f"PKR {value / 100_000:.2f} L"
+
+
+def result_html(result: dict) -> str:
+    predicted = result["predicted_pkr"]
+    low = result["range_low_pkr"]
+    high = result["range_high_pkr"]
     span = high - low
     pos = 50.0 if span <= 0 else (predicted - low) / span * 100
     pos = min(max(pos, 0), 100)
@@ -344,7 +202,7 @@ def result_html(predicted: float, low: float, high: float, source: str) -> str:
         "exact": "Market data: exact match for this model and year.",
         "model": "Market data: model-level average (no exact year match).",
         "none": "Market data: no listings for this model, overall averages used.",
-    }[source]
+    }[result["market_source"]]
     return f"""
 <div class="result-card">
     <div class="label">Estimated fair price</div>
@@ -357,19 +215,20 @@ def result_html(predicted: float, low: float, high: float, source: str) -> str:
 """
 
 
-def verdict_html(predicted: float, asking: float) -> str:
-    diff = asking - predicted
-    pct = diff / predicted * 100
-    if abs(diff) <= TEST_MAE:
+def verdict_html(verdict: dict) -> str:
+    diff = verdict["difference_pkr"]
+    pct = verdict["difference_pct"]
+    if verdict["status"] == "fair":
         cls, title = "ok", "Looks fair"
         text = f"Asking price is within the typical error margin (±{fmt_pkr(TEST_MAE)}) of the estimate."
-    elif diff > 0:
+    elif verdict["status"] == "above":
         cls, title = "bad", "Above market value"
         text = f"Asking is {fmt_pkr(diff)} ({pct:+.1f}%) above the estimate. Negotiate."
     else:
         cls, title = "good", "Below market value"
-        text = f"Asking is {fmt_pkr(-diff)} ({pct:+.1f}%) below the estimate. Check the car's condition before buying."
-    return f'<div class="verdict {cls}"><div class="v-title">{title}</div>{text}</div>'
+        text = (f"Asking is {fmt_pkr(-diff)} ({pct:+.1f}%) below the estimate. "
+                "Check the car's condition before buying.")
+    return (f'<div class="verdict {cls}"><div class="v-title">{title}</div>{text}</div>')
 
 
 def placeholder_html() -> str:
@@ -382,20 +241,14 @@ def placeholder_html() -> str:
 """
 
 
-def fmt_pkr(value: float) -> str:
-    if value >= 10_000_000:
-        return f"PKR {value / 10_000_000:.2f} Cr"
-    return f"PKR {value / 100_000:.2f} L"
-
-
-def price_chart(comps: pd.DataFrame, mileage: float, estimate: float, asking: float):
+def price_chart(comps: pd.DataFrame, mileage: float, estimate_pkr: float, asking: float):
     fig, ax = plt.subplots(figsize=(8, 4.2))
     fig.patch.set_facecolor(CARD)
     ax.set_facecolor(CARD)
 
     ax.scatter(comps["mileage_km"] / 1000, comps["price_in_pkr"] / 100_000,
                alpha=0.55, s=40, color=INFO, edgecolor="none", label="Dataset listings")
-    ax.scatter([mileage / 1000], [estimate / 100_000], color=ACCENT, marker="*",
+    ax.scatter([mileage / 1000], [estimate_pkr / 100_000], color=ACCENT, marker="*",
                s=320, zorder=3, edgecolor=TEXT, linewidth=0.6, label="Your car (estimate)")
     if asking:
         ax.scatter([mileage / 1000], [asking / 100_000], color=TEXT, marker="X",
@@ -421,9 +274,9 @@ st.set_page_config(page_title="KaarWala", page_icon="🚗", layout="wide",
                    initial_sidebar_state="collapsed")
 st.html(CSS)
 
-model = load_model()
+load_model()
+options = get_options()
 reference = load_reference()
-lookup = load_lookup()
 
 st.html(hero_html(len(reference)))
 
@@ -436,15 +289,14 @@ with left:
 
         c1, c2 = st.columns(2)
         with c1:
-            brand = st.selectbox("Brand", sorted(reference["brand"].dropna().unique()))
+            brand = st.selectbox("Brand", options["brands"])
         with c2:
-            models = sorted(reference.loc[reference["brand"] == brand, "model"].dropna().unique())
-            model_name = st.selectbox("Model", models)
+            model_name = st.selectbox("Model", options["models_by_brand"].get(brand, []))
 
-        variants = sorted(reference.loc[
-            (reference["brand"] == brand) & (reference["model"] == model_name), "variant"
-        ].dropna().unique())
-        variant_choice = st.selectbox("Variant", ["Not sure / not listed"] + list(variants))
+        variant_choice = st.selectbox(
+            "Variant",
+            ["Not sure / not listed"] + options["variants"].get(f"{brand}|{model_name}", []),
+        )
         variant = None if variant_choice == "Not sure / not listed" else variant_choice
 
         c3, c4 = st.columns(2)
@@ -459,14 +311,15 @@ with left:
         st.html('<div class="section-title">⚙️ Specs</div>'
                 '<div class="section-sub">Engine, fuel and gearbox.</div>')
 
+        fuel_options = options["fuel_types"]
         c5, c6 = st.columns(2)
         with c5:
-            fuel_options = sorted(reference["fuel_type"].dropna().unique())
-            fuel_type = st.selectbox("Fuel type", fuel_options,
-                                     index=fuel_options.index("Petrol") if "Petrol" in fuel_options else 0)
+            fuel_type = st.selectbox(
+                "Fuel type", fuel_options,
+                index=fuel_options.index("Petrol") if "Petrol" in fuel_options else 0,
+            )
         with c6:
-            transmission = st.selectbox("Transmission",
-                                        sorted(reference["transmission"].dropna().unique()))
+            transmission = st.selectbox("Transmission", options["transmissions"])
 
         if fuel_type == "Electric":
             st.info("Electric cars have no engine, so 0 cc is used.")
@@ -479,8 +332,7 @@ with left:
         st.html('<div class="section-title">📍 Listing</div>'
                 '<div class="section-sub">Where it is sold and the seller\'s price (optional).</div>')
 
-        city = st.selectbox("City", sorted(reference["city"].dropna().unique()),
-                            index=None, placeholder="Choose a city")
+        city = st.selectbox("City", options["cities"], index=None, placeholder="Choose a city")
         asking_price = st.number_input("Seller's asking price (PKR, optional)",
                                        min_value=0, value=0, step=50000,
                                        help="Leave at 0 to skip the price check.")
@@ -493,48 +345,53 @@ with right:
     elif city is None:
         st.error("Please choose a city.")
     else:
-        inputs = {
-            "brand": brand, "model": model_name, "variant": variant, "year": int(year),
-            "mileage": mileage, "fuel_type": fuel_type, "transmission": transmission,
-            "engine_cc": engine_cc, "city": city, "asking_price": asking_price,
-        }
-        errors = validate(inputs)
+        result = estimate({
+            "brand": brand,
+            "model": model_name,
+            "variant": variant,
+            "year": int(year),
+            "mileage": mileage,
+            "fuel_type": fuel_type,
+            "transmission": transmission,
+            "engine_cc": engine_cc,
+            "city": city,
+            "asking_price": asking_price,
+        })
 
-        if errors:
-            for err in errors:
+        if result["errors"]:
+            for err in result["errors"]:
                 st.error(err)
         else:
-            features, source = build_features(inputs, reference, lookup)
-            predicted = max(float(model.predict(features)[0]), MIN_PRICE)
-            low = max(predicted - TEST_MAE, MIN_PRICE)
-            high = predicted + TEST_MAE
+            for warning in result["warnings"]:
+                st.warning(warning)
 
+            car = result["car"]
             st.html(chips_html([
-                f"{brand} {model_name}",
-                f"{int(year)}",
-                f"{mileage:,.0f} km",
-                fuel_type,
-                transmission,
-                city,
+                f"{car['brand']} {car['model']}",
+                f"{car['year']}",
+                f"{car['mileage']:,.0f} km",
+                car["fuel_type"],
+                car["transmission"],
+                car["city"],
             ]))
 
-            st.html(result_html(predicted, low, high, source))
+            st.html(result_html(result))
 
-            if asking_price > 0:
-                st.html(verdict_html(predicted, asking_price))
+            if result["verdict"]:
+                st.html(verdict_html(result["verdict"]))
 
-            if predicted >= LUXURY_THRESHOLD:
+            if result["high_value"]:
                 st.html('<div class="warn">⚠️ High-value car. The real error is usually much larger '
                         'than the range shown, so treat this as a rough guide.</div>')
 
-            comps = reference[(reference["brand"] == brand) & (reference["model"] == model_name)]
+            comps = reference[(reference["brand"] == car["brand"]) & (reference["model"] == car["model"])]
             comps = comps.dropna(subset=["mileage_km", "price_in_pkr"])
             if not comps.empty:
                 with st.container(border=True):
                     st.html('<div class="section-title">📈 Market comparison</div>'
                             f'<div class="section-sub">{len(comps)} listings of this model '
                             'in the dataset.</div>')
-                    fig = price_chart(comps, mileage, predicted, asking_price)
+                    fig = price_chart(comps, car["mileage"], result["predicted_pkr"], car["asking_price"])
                     st.pyplot(fig)
                     plt.close(fig)
 
@@ -547,5 +404,5 @@ with st.expander("How this estimate works"):
         f"- The range is the estimate ± the test-set error (about {fmt_pkr(TEST_MAE)}).\n"
         "- The chart uses listings from the dataset, not live OLX ads.\n"
         "- This is an estimate, not a valuation or financial advice.\n\n"
-        f"*Model: {type(model).__name__} · scikit-learn {sklearn.__version__}*"
+        f"*Model: scikit-learn {sklearn.__version__}*"
     )
