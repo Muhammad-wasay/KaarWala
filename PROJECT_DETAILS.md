@@ -4,7 +4,7 @@ Humara project 3 clear stages mein chalega. Har stage ka ek **Fixed Output File*
 [STAGE 1: Member 1]
 Raw CSVs (10k + 59k) 
    └──> Notebook: notebooks/01_data_and_eda.ipynb
-   └──> Output File: data/kaarwala_merged.csv (10,589 rows × 18 columns) + 5 EDA Plots
+   └──> Output File: data/kaarwala_merged.csv (10,589 rows × 16 columns) + 5 EDA Plots
              │
              ▼
 [STAGE 2: Member 2]
@@ -22,37 +22,38 @@ Reads: models/kaarwala_pipeline.joblib
    └──> 3. Local FastAPI Backend + HTML Frontend (app/main.py + app/index.html)
 ```
 ---
-## 2. Locked Data Contract (17 Features + 1 Target)
-> **Rule for All Members:** Kisi bhi file mein in 18 columns ke spelling change nahi honge! Member 1 yehi columns save karega, Member 2 inhi par Pipeline banayega, aur Member 3 inhi par App form banayega.
-### A. Categorical Features (Text — 6 Columns)
+## 2. Locked Data Contract (15 Features + 1 Target = Total 16 Columns)
+> **Rule for All Members:** Kisi bhi file mein in 16 columns ke spelling change nahi honge! Member 1 yehi columns save karega, Member 2 inhi par Pipeline banayega, aur Member 3 inhi par App form banayega.
+
+### A. Categorical Features (Text — 7 Columns)
 *(Member 2 in par `SimpleImputer(strategy="most_frequent")` + `OneHotEncoder(handle_unknown="ignore")` lagayega)*
 | # | Column Name | Type | Example Values | Description |
 |---|---|---|---|---|
 | 1 | `brand` | text | `"Toyota"`, `"Honda"`, `"Suzuki"` | Gari banane wali company |
 | 2 | `model` | text | `"Corolla"`, `"Civic"`, `"Cultus"` | Gari ka model naam |
-| 3 | `variant` | text | `"VXL"`, `"GLi"`, `"Oriel"` | Sub-model / trim (5% missing values) |
+| 3 | `variant` | text | `"VXL"`, `"GLi"`, `"Oriel"` | Sub-model / trim |
 | 4 | `fuel_type` | text | `"Petrol"`, `"Hybrid"`, `"Diesel"` | Fuel ki qisam |
 | 5 | `transmission` | text | `"Automatic"`, `"Manual"` | Gear transmission |
 | 6 | `city` | text | `"Lahore"`, `"Karachi"`, `"Islamabad"` | Jis shehar mein gari listed hai |
-### B. Numerical Features (Numbers — 11 Columns)
+| 7 | `province` | text | `"Punjab"`, `"Sindh"`, `"Islamabad"`, `"KPK"` | Regional geographic grouping |
+
+### B. Numerical Features (Numbers — 8 Columns)
 *(Member 2 in par `SimpleImputer(strategy="median")` + `StandardScaler()` lagayega)*
 | # | Column Name | Type | Source / Formula | Description |
 |---|---|---|---|---|
-| 7 | `year` | int | 10k File | Model year (1961 – 2026) |
-| 8 | `mileage_km` | float | 10k File | Kitne kilometer chali hui hai |
-| 9 | `engine_cc` | float | 10k File | Engine size in CC |
-| 10 | `market_supply_count` | float | Merged from 59k File | 59k dataset mein is `(brand, model)` ki kul listings |
-| 11 | `market_avg_mileage` | float | Merged from 59k File | 59k dataset mein is `(brand, model)` ki average mileage |
-| 12 | `vehicle_age` | int | `2026 - year` | Gari kitne saal purani hai |
-| 13 | `km_per_year` | float | `mileage_km / max(vehicle_age, 1)` | Har saal average kitne KM chali |
-| 14 | `mileage_vs_market` | float | `mileage_km / market_avg_mileage` | Market average ke muqable mein kitni chali |
-| 15 | `is_hybrid_or_ev` | int (0/1) | `1` if Hybrid/Electric/PHEV else `0` | Eco/Hybrid indicator |
-| 16 | `is_automatic` | int (0/1) | `1` if Automatic else `0` | Automatic gear indicator |
-| 17 | `is_big_city` | int (0/1) | `1` if LHR/KHI/ISB/RWP else `0` | Major metro city indicator |
+| 8 | `year` | int | 10k File | Model year (1961 – 2026) |
+| 9 | `mileage_km` | float | 10k File | Kitne kilometer chali hui hai |
+| 10 | `engine_cc` | float | 10k File | Engine size in CC (EV ke liye 0.0) |
+| 11 | `market_supply_count` | float | Merged from 59k File | 59k dataset mein is `(brand, model)` ki kul listings |
+| 12 | `market_avg_mileage` | float | Merged from 59k File | 59k dataset mein is `(brand, model)` ki average mileage |
+| 13 | `vehicle_age` | int | `2026 - year` | Gari kitne saal purani hai |
+| 14 | `km_per_year` | float | `mileage_km / max(vehicle_age, 1)` | Har saal average kitne KM chali |
+| 15 | `mileage_vs_market` | float | `mileage_km / market_avg_mileage` | Market average ke muqable mein kitni chali |
+
 ### C. Target Variable (Jawab — 1 Column)
 | Column Name | Type | Description |
 |---|---|---|
-| **`price_pkr`** | float | Asking price in Pakistani Rupees (PKR) |
+| **`price_in_pkr`** | int / float | Asking price in Pakistani Rupees (PKR) |
 ---
 # 📚 KaarWala — Detailed Team Guide & ML Dictionary (For All 3 Members)
 
@@ -89,7 +90,7 @@ Reads: models/kaarwala_pipeline.joblib
     4. `is_hybrid_or_ev` = Hybrid/Electric hai to `1` warna `0`
     5. `is_automatic` = Automatic hai to `1` warna `0`
     6. `is_big_city` = Karachi/Lahore/Islamabad/Rawalpindi hai to `1` warna `0`
-  * **Kyun:** Miss ki shart hai **minimum 15 features** aur **feature engineering**. Is se hamare kul **17 features** ban jate hain.
+  * **Kyun:** Miss ki shart hai **minimum 15 features** aur **feature engineering**. Is se hamare kul **15 features** ban jate hain.
 * **Step 1.4 (Outlier Cleaning):**
   * **Kya karna hai:** Jin rows mein `mileage_flag` ya `engine_cc_flag` mein ghalti hai ya namumkin price/mileage hai, unko clean karna hai, aur `price_outlier_flag` ko drop karna hai (taake Target Leakage na ho).
 * **Step 1.5 (5 EDA Graphs Banana):**

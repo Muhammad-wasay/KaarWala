@@ -20,11 +20,11 @@ To satisfy the multi-source requirement (minimum 5,000 rows and 15 features) whi
 | **Pakistan Used Car Prices — Car Price Prediction** | Muhammad Humayun Babar (Kaggle) | 59,554 | Sept 2026 | **CC0: Public Domain** | External reference corpus used to join `market_supply_count` and `market_avg_mileage` |
 
 * **Privacy & Ethics:** Neither dataset contains Personally Identifiable Information (no seller names, phone numbers, or residential addresses).
-* **Final Feature Matrix:** **10,589 rows × 17 features** + `price_pkr` (Target).
+* **Final Feature Matrix:** **10,589 rows × 15 features** + `price_pkr` (Target).
 
 ---
 
-## 🛠️ Feature Set (17 Features)
+## 🛠️ Feature Set (15 Features + 1 Target)
 1. **Original Features (9):** `brand`, `model`, `variant`, `year`, `mileage_km`, `fuel_type`, `transmission`, `engine_cc`, `city`
 2. **Merged Market Features (2):** `market_supply_count`, `market_avg_mileage`
 3. **Engineered Features (6):** `vehicle_age`, `km_per_year`, `mileage_vs_market`, `is_hybrid_or_ev`, `is_automatic`, `is_big_city`
