@@ -18,6 +18,7 @@ import sklearn
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 APP_DIR = Path(__file__).resolve().parent
@@ -63,6 +64,8 @@ app = FastAPI(
     description="Fair market price estimate for used cars in Pakistan.",
     lifespan=lifespan,
 )
+
+app.mount("/static", StaticFiles(directory=APP_DIR / "static"), name="static")
 
 
 class CarInput(BaseModel):
