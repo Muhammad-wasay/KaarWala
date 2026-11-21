@@ -147,20 +147,40 @@ CSS = f"""
     .placeholder h3 {{ color: {TEXT}; margin: .2rem 0 .4rem 0; font-weight: 700; }}
 
     div[data-testid="stVerticalBlockBorderWrapper"] > div {{
-        background: {CARD};
+        background: {CARD} !important;
         border-radius: 20px;
     }}
-    div[data-baseweb="select"] > div, div[data-baseweb="input"] > div,
+    /* Ensure all form labels and markdown text are always dark and clearly visible */
+    [data-testid="stWidgetLabel"] p, label, .stSelectbox label, .stNumberInput label {{
+        color: {TEXT} !important;
+        font-weight: 700 !important;
+        font-size: 0.92rem !important;
+    }}
+    /* Clean and readable input boxes */
+    div[data-baseweb="select"] > div,
+    div[data-baseweb="input"] > div,
     div[data-testid="stNumberInput"] input {{
+        background-color: #ffffff !important;
+        color: {TEXT} !important;
+        border: 1px solid #cbd5e1 !important;
         border-radius: 10px !important;
     }}
+    div[data-baseweb="select"] span {{
+        color: {TEXT} !important;
+        font-weight: 500 !important;
+    }}
+    div[data-testid="stNumberInput"] button {{
+        background-color: #f1f5f9 !important;
+        color: {TEXT} !important;
+        border: none !important;
+    }}
     .stButton > button {{
-        border-radius: 12px; height: 3rem; font-weight: 700; font-size: 1rem;
-        background: linear-gradient(90deg, {ACCENT}, {ACCENT2}); border: none; color: white;
+        border-radius: 12px; height: 3.2rem; font-weight: 700; font-size: 1.05rem;
+        background: linear-gradient(90deg, {ACCENT}, {ACCENT2}) !important; border: none; color: white !important;
         box-shadow: 0 8px 20px rgba(236,72,153,.25);
     }}
-    .stButton > button:hover {{ filter: brightness(1.05); color: white; border: none; }}
-    label, .stMarkdown p {{ color: {TEXT}; }}
+    .stButton > button:hover {{ filter: brightness(1.05); color: white !important; border: none; }}
+    label, .stMarkdown p {{ color: {TEXT} !important; }}
 </style>
 """
 
@@ -289,13 +309,20 @@ with left:
 
         c1, c2 = st.columns(2)
         with c1:
-            brand = st.selectbox("Brand", options["brands"])
+            brands_list = options["brands"]
+            default_brand_idx = brands_list.index("Toyota") if "Toyota" in brands_list else 0
+            brand = st.selectbox("Brand", brands_list, index=default_brand_idx)
         with c2:
-            model_name = st.selectbox("Model", options["models_by_brand"].get(brand, []))
+            models_list = options["models_by_brand"].get(brand, [])
+            default_model_idx = models_list.index("Corolla") if "Corolla" in models_list else 0
+            model_name = st.selectbox("Model", models_list, index=default_model_idx)
 
+        avail_variants = options["variants"].get(f"{brand}|{model_name}", [])
+        variant_options = ["Not sure / not listed"] + avail_variants
         variant_choice = st.selectbox(
             "Variant",
-            ["Not sure / not listed"] + options["variants"].get(f"{brand}|{model_name}", []),
+            variant_options,
+            index=0,
         )
         variant = None if variant_choice == "Not sure / not listed" else variant_choice
 
@@ -332,7 +359,9 @@ with left:
         st.html('<div class="section-title">📍 Listing</div>'
                 '<div class="section-sub">Where it is sold and the seller\'s price (optional).</div>')
 
-        city = st.selectbox("City", options["cities"], index=None, placeholder="Choose a city")
+        cities_list = options["cities"]
+        default_city_idx = cities_list.index("Karachi") if "Karachi" in cities_list else 0
+        city = st.selectbox("City", cities_list, index=default_city_idx)
         asking_price = st.number_input("Seller's asking price (PKR, optional)",
                                        min_value=0, value=0, step=50000,
                                        help="Leave at 0 to skip the price check.")
