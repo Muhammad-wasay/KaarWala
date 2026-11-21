@@ -16,18 +16,18 @@ To satisfy the multi-source requirement (minimum 5,000 rows and 15 features) whi
 
 | Dataset | Author / Source | Records | Coverage / Date | License | Role in Pipeline |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Pakistan Used Cars Dataset: Prices & Specs 2026** | Danish Javaid Meo (Kaggle) | 10,589 | Sept 28, 2026 | Educational & Research Use | Primary dataset with city, variant, specs, and 2026 asking prices |
-| **Pakistan Used Car Prices — Car Price Prediction** | Muhammad Humayun Babar (Kaggle) | 59,554 | Sept 2026 | **CC0: Public Domain** | External reference corpus used to join `market_supply_count` and `market_avg_mileage` |
+| **Pakistan Used Cars Dataset: Prices & Specs 2026** | Danish Javaid Meo (Kaggle) | 10,589 | Sept 28, 2026 | Educational & Research Use | **Primary training dataset** — OLX Pakistan listings: city, variant, specs, and 2026 asking prices |
+| **Pakistan Used Car Prices — Car Price Prediction** | Muhammad Humayun Babar (Kaggle) | 59,554 | Sept 2026 | **CC0: Public Domain** | **Market reference corpus (NOT used for training)** — PakWheels listings; used only to compute `market_supply_count` and `market_avg_mileage` by joining on `(brand, model, year)` |
 
 * **Privacy & Ethics:** Neither dataset contains Personally Identifiable Information (no seller names, phone numbers, or residential addresses).
-* **Final Feature Matrix:** **10,589 rows × 15 features** + `price_pkr` (Target).
+* **Final Feature Matrix:** **10,589 rows × 15 features** + `price_in_pkr` (Target).
 
 ---
 
 ## 🛠️ Feature Set (15 Features + 1 Target)
 1. **Original Features (9):** `brand`, `model`, `variant`, `year`, `mileage_km`, `fuel_type`, `transmission`, `engine_cc`, `city`
 2. **Merged Market Features (2):** `market_supply_count`, `market_avg_mileage`
-3. **Engineered Features (6):** `vehicle_age`, `km_per_year`, `mileage_vs_market`, `is_hybrid_or_ev`, `is_automatic`, `is_big_city`
+3. **Engineered Features (4):** `vehicle_age`, `km_per_year`, `mileage_vs_market`, `province`
 
 ---
 
@@ -44,7 +44,7 @@ KaarWala/
 
 ---
 
-## 👤 STAGE 2: Machine Learning Pipeline, Model Benchmarking & Tuning (Member 2 — Completed ✅)
+## 👤 STAGE 2: Machine Learning Pipeline, Model Benchmarking & Tuning (Mesum Abbas / CT-24238 — Completed ✅)
 
 **Execution Notebook:** `notebooks/02_modeling_and_tuning.ipynb`  
 **Production Artifact:** `models/kaarwala_pipeline.joblib`
@@ -66,8 +66,8 @@ During model development, four engineering and data challenges were identified a
   *Solution:* Integrated Scikit-Learn’s `TransformedTargetRegressor` applying a **Log Transformation (`np.log1p`)** on price during training, and inverse exponent (`np.expm1`) on inference. This boosted validation $R^2$ from **90.46% to 94.44%** while reducing Mean Absolute Error.
 
 * **Challenge 3: Multi-processing Thread Deadlock under Windows**  
-  *Issue:* Running nested 5-Fold GridSearchCV across multi-tree estimators with `n_jobs=-1` caused Windows subprocess locks, freezing execution for 6+ minutes.  
-  *Solution:* Switched to an optimized, parallel-safe KFold cross-validation routine, completing in **30 seconds**.
+  *Issue:* Running parallel `KFold` cross-validation across multi-tree estimators with `n_jobs=-1` caused Windows subprocess locks, freezing execution for 6+ minutes.  
+  *Solution:* Switched to an optimized, parallel-safe KFold `cross_val_score` routine with `n_jobs=2`, completing in **30 seconds**. Note: Full `GridSearchCV` was not run due to this Windows constraint; hyperparameters (`n_estimators=150`, `max_depth=25`, `min_samples_split=4`) were selected through iterative manual tuning on the validation set.
 
 * **Challenge 4: Ultra-Luxury Segment Variance**  
   *Issue:* Scatter diagnostics confirmed high precision between PKR 0 to 1 Crore, with wider variance appearing only above PKR 2 Crore due to scarce data (<1% of listings).  
@@ -95,9 +95,11 @@ During model development, four engineering and data challenges were identified a
    Fold scores ranged from 87.92% to 93.97%, achieving a **Mean $R^2$ of 90.46% (±0.0221)**, verifying model consistency.
 
 5. **Step 2.5 — Final Held-Out Test Evaluation (15% Unseen Data):**  
-   - **Test Set $R^2$ Score:** **91.55%**  
-   - **Test Mean Absolute Error (MAE):** **PKR 479,339 (~4.79 Lakh PKR)**  
-   - **Train vs. Test Gap:** **5.26%** (Well within the 10% threshold $\implies$ Zero Overfitting).
+   - **Test Set $R^2$ Score:** **94.36%**  
+   - **Test Mean Absolute Error (MAE):** **PKR 459,818 (~4.60 Lakh PKR)**  
+   - **Test RMSE:** **PKR 1,325,946 (~13.26 Lakh PKR)**  
+   - **Test MAPE:** **10.8%** (project target: ≤15% ✅)  
+   - **Train vs. Test Gap:** Mild — model generalizes well (leakage test R²= −0.067 confirms zero data leakage).
 
 6. **Step 2.6 — Production Export:**  
    Exported complete pipeline to `models/kaarwala_pipeline.joblib`.
@@ -113,7 +115,7 @@ Member 3 can load the complete pipeline via `joblib.load('models/kaarwala_pipeli
 2. **Automated Backend Feature Completion:**  
    - Derive `province` from city mapping.
    - Calculate `vehicle_age = 2026 - year` and `km_per_year = mileage_km / max(vehicle_age, 1)`.
-   - Query `data/market_lookup.csv` by `(brand, model)` for `market_supply_count` and `market_avg_mileage`.
+   - Query `data/market_lookup.csv` by `(brand, model, year)` for `market_supply_count` and `market_avg_mileage` (year clipped to 2024 for 2025/2026 models).
    - Calculate `mileage_vs_market = mileage_km / market_avg_mileage`.
    - Enforce `if fuel_type == 'Electric' \implies engine_cc = 0.0`.
 3. **Inference & UI Display:**  
