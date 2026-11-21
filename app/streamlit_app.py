@@ -8,7 +8,7 @@ Run from the project root:
 import sys
 from pathlib import Path
 
-import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 import pandas as pd
 import sklearn
 import streamlit as st
@@ -242,7 +242,8 @@ def placeholder_html() -> str:
 
 
 def price_chart(comps: pd.DataFrame, mileage: float, estimate_pkr: float, asking: float):
-    fig, ax = plt.subplots(figsize=(8, 4.2))
+    fig = Figure(figsize=(8, 4.2))
+    ax = fig.subplots()
     fig.patch.set_facecolor(CARD)
     ax.set_facecolor(CARD)
 
@@ -255,6 +256,7 @@ def price_chart(comps: pd.DataFrame, mileage: float, estimate_pkr: float, asking
                    s=140, zorder=3, label="Asking price")
 
     x_max = max(comps["mileage_km"].quantile(0.98) / 1000, mileage / 1000) * 1.1
+    x_max = max(x_max, 10.0)
     ax.set_xlim(0, x_max)
     ax.set_xlabel("Mileage (thousand km)", color=MUTED)
     ax.set_ylabel("Price (Lakh PKR)", color=MUTED)
@@ -325,8 +327,13 @@ with left:
             st.info("Electric cars have no engine, so 0 cc is used.")
             engine_cc = 0.0
         else:
-            engine_cc = st.number_input("Engine (cc)", min_value=0, max_value=MAX_ENGINE_CC,
-                                        value=1300, step=100)
+            engine_cc = st.number_input(
+                "Engine (cc)",
+                min_value=MIN_ENGINE_CC,
+                max_value=MAX_ENGINE_CC,
+                value=1300,
+                step=100,
+            )
 
     with st.container(border=True):
         st.html('<div class="section-title">📍 Listing</div>'
@@ -337,27 +344,35 @@ with left:
                                        min_value=0, value=0, step=50000,
                                        help="Leave at 0 to skip the price check.")
 
+    if "valuation_result" not in st.session_state:
+        st.session_state.valuation_result = None
+
     estimate_clicked = st.button("✨ Estimate fair price", type="primary", use_container_width=True)
 
-with right:
-    if not estimate_clicked:
-        st.html(placeholder_html())
-    elif city is None:
-        st.error("Please choose a city.")
-    else:
-        result = estimate({
-            "brand": brand,
-            "model": model_name,
-            "variant": variant,
-            "year": int(year),
-            "mileage": mileage,
-            "fuel_type": fuel_type,
-            "transmission": transmission,
-            "engine_cc": engine_cc,
-            "city": city,
-            "asking_price": asking_price,
-        })
+    if estimate_clicked:
+        if city is None:
+            st.session_state.valuation_result = {"error": "Please choose a city."}
+        else:
+            st.session_state.valuation_result = estimate({
+                "brand": brand,
+                "model": model_name,
+                "variant": variant,
+                "year": int(year),
+                "mileage": mileage,
+                "fuel_type": fuel_type,
+                "transmission": transmission,
+                "engine_cc": engine_cc,
+                "city": city,
+                "asking_price": asking_price,
+            })
 
+with right:
+    if st.session_state.valuation_result is None:
+        st.html(placeholder_html())
+    elif "error" in st.session_state.valuation_result:
+        st.error(st.session_state.valuation_result["error"])
+    else:
+        result = st.session_state.valuation_result
         if result["errors"]:
             for err in result["errors"]:
                 st.error(err)
@@ -393,7 +408,6 @@ with right:
                             'in the dataset.</div>')
                     fig = price_chart(comps, car["mileage"], result["predicted_pkr"], car["asking_price"])
                     st.pyplot(fig)
-                    plt.close(fig)
 
 st.write("")
 with st.expander("How this estimate works"):

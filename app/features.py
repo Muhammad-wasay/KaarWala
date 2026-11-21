@@ -27,7 +27,7 @@ MAX_MILEAGE = 1_000_000
 MIN_ENGINE_CC = 50
 MAX_ENGINE_CC = 8000
 MIN_PRICE = 150_000
-TEST_MAE = 479_339            # test-set MAE from notebook 02, Step 2.5
+TEST_MAE = 459_818            # test-set MAE from notebook 02, Step 2.5
 LOOKUP_CAP_YEAR = 2024        # same cap used when the market data was merged
 LUXURY_THRESHOLD = 10_000_000
 
