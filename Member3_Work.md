@@ -50,11 +50,9 @@ Branch: `frontend-and-deployment`
 2. Open the GitHub branch link and go to `app/`.
 3. Run locally:
 
-'''
-git checkout frontend-and-deployment
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-'''
+`git checkout frontend-and-deployment`
+`pip install -r requirements.txt`
+`uvicorn app.main:app --reload`
 
 Open `http://localhost:8000` and submit Toyota / Corolla / 2019 / 60000 / Petrol / Automatic / 1600 / Lahore.
 
