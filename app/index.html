@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KaarWala - Fair Price Estimator</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>KaarWala</h1>
+    <p>Know what a used car is really worth in Pakistan.</p>
+  </header>
+
+  <div class="grid">
+    <form class="card" id="form" novalidate>
+      <h2>Car details</h2>
+      <div class="sub">Dropdowns use the exact values from the dataset.</div>
+
+      <div class="row">
+        <div class="field"><label for="brand">Brand</label><select id="brand"></select></div>
+        <div class="field"><label for="model">Model</label><select id="model"></select></div>
+      </div>
+      <div class="field"><label for="variant">Variant</label><select id="variant"></select></div>
+
+      <div class="row">
+        <div class="field"><label for="year">Model year</label><input id="year" type="number" step="1"></div>
+        <div class="field"><label for="mileage">Mileage (km)</label><input id="mileage" type="number" step="1000"></div>
+      </div>
+
+      <div class="row">
+        <div class="field"><label for="fuel">Fuel type</label><select id="fuel"></select></div>
+        <div class="field"><label for="transmission">Transmission</label><select id="transmission"></select></div>
+      </div>
+
+      <div class="field" id="engineField"><label for="engine">Engine (cc)</label><input id="engine" type="number" step="100"></div>
+
+      <div class="field"><label for="city">City</label><select id="city"></select></div>
+
+      <div class="field">
+        <label for="asking">Seller's asking price (PKR, optional)</label>
+        <input id="asking" type="number" min="0" step="50000" placeholder="Leave empty to skip">
+      </div>
+
+      <button type="submit" id="submit">Estimate fair price</button>
+    </form>
+
+    <section class="card result" id="output"></section>
+  </div>
+
+  <div class="footer">Estimate based on 10,589 listings. Not a valuation or financial advice.</div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
