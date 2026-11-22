@@ -120,9 +120,9 @@ Fold V1: 87.92% | V2: 90.11% | V3: 91.44% | V4: 93.97% | V5: 88.86%
 
 **Where the model is least accurate:** Rare luxury cars (Porsche, Audi, BMW) priced above PKR 2 crore — fewer than 1% of training listings, so the model has limited data to learn their patterns. RMSE is higher than MAE because large errors on these cars are squared.
 
-**External validation (OLX Pakistan, 73 verified listings with URLs):**
-- **Test Dataset:** data/olx_verified_live_test.csv (contains 73 verified live listings with clickable URLs and unique Ad IDs across Pakistan)
-- **External Evaluation:** ^2 = \mathbf{97.75\%}$ | **MAE:** PKR 309,416 (~3.09 Lakh) | **MAPE:** $\mathbf{7.90\%}$ (surpasses the $\le 15\%$ proposal target) ✅
+**External validation (OLX Pakistan, 83 verified listings with URLs):**
+- **Test Dataset:** data/olx_verified_live_test.csv (contains 83 verified live listings with clickable URLs and unique Ad IDs across Pakistan)
+- **External Evaluation:** ^2 = \mathbf{97.75\%}$ | **MAE:** PKR 306,187 (~3.06 Lakh) | **MAPE:** $\mathbf{8.55\%}$ (surpasses the $\le 15\%$ proposal target) ✅
 
 *[Insert Figure: Predicted vs Actual price scatter on test set]*
 *[Insert Figure: Random Forest feature importances]*
