@@ -53,7 +53,7 @@ Five plots were produced in `notebooks/01_eda.ipynb`:
 |--------|------|------------|
 | 1 | **Price distribution (histogram)** | Price is heavily right-skewed: median = PKR 3.43 lakh, mean = PKR 4.93 lakh, max = PKR 10.80 crore (luxury EVs). Log-transform normalises the distribution, justifying the use of `TransformedTargetRegressor(func=np.log1p)`. |
 | 2 | **Top 10 car brands (bar chart)** | Toyota (3,110 listings, 29.4%), Suzuki (2,608, 24.6%), and Honda (2,196, 20.7%) together account for 74.7% of the market. |
-| 3 | **Mileage vs. price (scatter plot)** | Strong negative correlation — higher mileage cars sell at lower prices. Outliers visible for recent low-mileage luxury imports. |
+| 3 | **Mileage vs. price (scatter plot)** | Weak negative correlation (−0.24): higher-mileage cars tend to sell for less, though high-end luxury SUVs remain expensive even at high mileage. |
 | 4 | **Vehicle age vs. price (box plot)** | Median price drops monotonically with age for most segments; newer (0–3 year old) cars show the widest price spread due to luxury imports. |
 | 5 | **Correlation heatmap (numerical features)** | `year` shows strongest positive correlation with price (+0.61); `vehicle_age` shows strongest negative (−0.61); `mileage_km` moderately negative (−0.37). `market_supply_count` and `mileage_vs_market` add independent signal. |
 
